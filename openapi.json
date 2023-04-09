@@ -1,0 +1,317 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Star wars API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/api/planets": {
+      "get": {
+        "summary": "Get planets",
+        "description": "Retrieve a list of planets with pagination.",
+        "operationId": "getPlanets",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of planets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "climate": {
+                      "type": "string"
+                    },
+                    "diameter": {
+                      "type": "string"
+                    },
+                    "gravity": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "population": {
+                      "type": "string"
+                    },
+                    "residents": {
+                      "type": "string"
+                    },
+                    "terrain": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/people": {
+      "get": {
+        "summary": "Get people",
+        "description": "Retrieve a list of people with pagination.",
+        "operationId": "getPeople",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of people",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/planets/{planetId}": {
+      "get": {
+        "summary": "Get a planet by ID",
+        "description": "Retrieve a planet object by its ID.",
+        "operationId": "getPlanet",
+        "parameters": [
+          {
+            "name": "planetId",
+            "in": "path",
+            "description": "Planet ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A planet object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "climate": {
+                      "type": "string"
+                    },
+                    "diameter": {
+                      "type": "string"
+                    },
+                    "gravity": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "population": {
+                      "type": "string"
+                    },
+                    "residents": {
+                      "type": "string"
+                    },
+                    "terrain": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/people/{personId}": {
+      "get": {
+        "summary": "Get a person by ID",
+        "description": "Retrieve a person object by its ID.",
+        "operationId": "getPerson",
+        "parameters": [
+          {
+            "name": "personId",
+            "in": "path",
+            "description": "Person ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A person object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "birth_year": {
+                      "type": "string"
+                    },
+                    "eye_color": {
+                      "type": "string"
+                    },
+                    "gender": {
+                      "type": "string"
+                    },
+                    "hair_color": {
+                      "type": "string"
+                    },
+                    "height": {
+                      "type": "string"
+                    },
+                    "homeworld": {
+                      "type": "string"
+                    },
+                    "mass": {
+                      "type": "string"
+                    },
+                    "skin_color": {
+                      "type": "string"
+                    },
+                    "created": {
+                      "type": "string"
+                    },
+                    "edited": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/people": {
+      "post": {
+        "summary": "Create a person",
+        "description": "Create a new person with the provided information.",
+        "operationId": "createPerson",
+        "requestBody": {
+          "description": "Person information",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 2
+                  },
+                  "birth_year": {
+                    "type": "string",
+                    "minLength": 2
+                  },
+                  "eye_color": {
+                    "type": "string",
+                    "minLength": 2
+                  },
+                  "gender": {
+                    "type": "string",
+                    "minLength": 2
+                  },
+                  "hair_color": {
+                    "type": "string",
+                    "minLength": 2
+                  },
+                  "height": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "homeworld": {
+                    "type": "string",
+                    "minLength": 2
+                  },
+                  "mass": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "skin_color": {
+                    "type": "string",
+                    "minLength": 2
+                  },
+                  "created": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "edited": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "required": [
+                  "name",
+                  "birth_year",
+                  "eye_color",
+                  "gender",
+                  "hair_color",
+                  "height",
+                  "homeworld",
+                  "mass",
+                  "skin_color",
+                  "created",
+                  "edited"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Person created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
